@@ -39,3 +39,48 @@ void Sorter::print(){
 	}
 	cout<<"]\n";
 }
+
+void Sorter::bogo_sort(){
+	time_t start = time(NULL);
+	unsigned long count = 1;
+	while(!this->isValid()){
+		this->randomize();
+		cout<<count<<": ";
+		this->print();
+		count++;
+	}
+	time_t taken = time(NULL) - start;
+	int min = taken/60;
+	int sec = taken%60;
+	cout<<"Ideal configuration reached in "<<min<<"m "<<sec<<"s : through "<<count<<" cycles"<<endl;
+	this->print();
+	if(taken != 0){
+		int speed_avg = count/(int)taken;
+		cout<<"Average processing speed was "<<speed_avg<<" per second."<<endl;
+	}
+}
+
+void Sorter::bubble_sort(){
+	time_t start = time(NULL);
+	unsigned long count = 1;
+	while(!this->isValid()){
+		for(int i = 0; i<num_elements-1; i++){
+			if(conf->at(i) > conf->at(i+1)){
+				iter_swap(conf->begin() + i, conf->begin() + 1 + i);
+			}
+		}
+		cout<<count<<": ";
+		this->print();
+		count++;
+	}
+	time_t taken = time(NULL) - start;
+	int min = taken/60;
+	int sec = taken%60;
+	cout<<"Ideal configuration reached in "<<min<<"m "<<sec<<"s : through "<<count<<" cycles"<<endl;
+	this->print();
+	if(taken != 0){
+		int speed_avg = count/(int)taken;
+		cout<<"Average processing speed was "<<speed_avg<<" per second."<<endl;
+	}
+}
+

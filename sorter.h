@@ -15,5 +15,7 @@ class Sorter{
 		Sorter(int);
 		bool isValid();
 		void randomize();
+		void bogo_sort();
+		void bubble_sort();
 		void print();
 };
